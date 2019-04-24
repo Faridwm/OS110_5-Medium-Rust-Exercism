@@ -95,9 +95,9 @@ pub fn is_valid_isbn(isbn: &str) -> bool {
         //is_numeric mengecek apakah setiap digit merupakan angka atau bukan (non-angka hanya X dan itu terletak di digit akhir ISBN)
         if char_bar[i-1].is_numeric() { 
             sum += (11 - i as i32) * (char_bar[i-1].to_string() //mengubah char enjadi String
-                                        .parse::<i32>() //mengubah String ke integer 32 bit
-                                        .unwrap()); 
-                                        //https://stackoverflow.com/questions/43983414/how-to-convert-char-to-integer-so-that-1-becomes-1
+                                        .parse::<i32>() //mengubah String ke integer 32 bit (Masih dalam Result)
+                                        .unwrap()); // me-return panic! dan mengeluarkan hasil parse dari result ke i32  
+            //ref: https://stackoverflow.com/questions/43983414/how-to-convert-char-to-integer-so-that-1-becomes-1
         }
         else if char_bar[i-1] == 'X' && i == 10 { //mengecek nilai X == 10 dan berada di digit terakhir ISBN
             sum += 10;
