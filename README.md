@@ -2,7 +2,7 @@
 
 ISBN adalah singkatan dari *International Standard Book Number* (Nomor Buku Standar Internasional), ISBN sendiri merupakan nomor unik yang terdiri dari 10/13 digit (dalam kasus ini 10 digit) sebagai pemberi identifikasi terhadap satu judul buku yang diterbitkan.
 
-Format ISBN dengan 10 digit terdiri dari 9 digit (0 - 9) di tambah dengan satu karakter cek yang terletak di digit terakhir ISBN, karakter cek ini bisa berupa digit 0 - 9 ataupun X (dimana X sendiri disini mewakili nilai 10).
+Format ISBN dengan 10 digit terdiri dari 9 digit (0 - 9) dengan atau tanpa strip(-) di tambah dengan satu karakter cek yang terletak di digit terakhir ISBN, karakter cek ini bisa berupa digit 0 - 9 ataupun X (dimana X sendiri disini mewakili nilai 10).
 
 Untuk memverifikasi ISBN 10 digit dapat menggunakan rumus berikut:
 ```
@@ -13,4 +13,25 @@ Jika hasil dari rumus berikut adalah 0 maka dapat disimpulkan ISBN tersebut bena
 ## Masalah
 Dalam ISBN-Verifier kita diberikan barisan digit, dimana kita akan mengecek barisan digit itu apakah memenuhi kriteria ISBN atau tidak.
 
-## Solusi
+# Solusi
+
+## Menghapus Strip dan Mengubah ke dalam list char
+Pertama kita hapus jika di input terhadap strip, jika tidak maka tidak terpengaruh
+``` rust
+let bar = isbn.replace("-", "");
+```
+
+lalu mengubah input dari String ke list char 
+```rust
+let char_bar: Vec<char> = bar.chars().collect(); 
+```
+
+## Verifier
+Untuk memverifier pertama kali kita cek apakah panjang nya adalah 10 atau tidak.
+```rust
+if char_bar.len() != 10 { //melakukan pengecekan apakah panjang dari digit == 10 atau tidak, jika tidak maka ISBN salah
+        return false;
+    }
+```
+
+
