@@ -36,22 +36,42 @@ if char_bar.len() != 10 { //melakukan pengecekan apakah panjang dari digit == 10
 
 Jika panjang String sebesar 10, maka masuk ke dalam rumus.
 ```rust
-let mut cek = 0;
+let mut sum = 0;
     for i in 1..=10{
         //is_numeric mengecek apakah setiap digit merupakan angka atau bukan (non-angka hanya X dan itu terletak di digit akhir ISBN)
         if char_bar[i-1].is_numeric() { 
-            cek += (11 - i as i32) * (char_bar[i-1].to_string() //mengubah char enjadi &str
-                                        .parse::<i32>() //mengubah &str ke integer 32 bit
-                                        .unwrap()); 
-                                        //https://stackoverflow.com/questions/43983414/how-to-convert-char-to-integer-so-that-1-becomes-1
+            sum += (11 - i as i32) * (char_bar[i-1].to_string() //mengubah char enjadi String
+                                        .parse::<i32>() //mengubah String ke integer 32 bit (Masih dalam Result)
+                                        .unwrap()); // me-return panic! dan mengeluarkan hasil parse dari result ke i32  
+            //ref: https://stackoverflow.com/questions/43983414/how-to-convert-char-to-integer-so-that-1-becomes-1
         }
         else if char_bar[i-1] == 'X' && i == 10 { //mengecek nilai X == 10 dan berada di digit terakhir ISBN
-            cek += 10;
+            sum += 10;
         }
         else {
             return false;
         }
     }
 ```
+
+### Penjelasan
+* Pertama deklarasi sum sebagai varibel hasil akhir dari rumus
+* Lalu kita cek apakah setiap char di dalam char list berupa angka atau bukan
+* Jika berupa angka maka akan masuk ke rumus 
+```rust
+if char_bar[i-1].is_numeric() { 
+            sum += (11 - i as i32) * (char_bar[i-1].to_string() //mengubah char enjadi String
+                                        .parse::<i32>() //mengubah String ke integer 32 bit (Masih dalam Result)
+                                        .unwrap()); // me-return panic! dan mengeluarkan hasil parse dari result ke i32
+        }
+```
+* Jika terdapat karakter X yang berada pada di akhir list maka X bernilai 10
+```rust
+else if char_bar[i-1] == 'X' && i == 10 { //mengecek nilai X == 10 dan berada di digit terakhir ISBN
+            sum += 10;
+        }
+```
+* 
+
 
 
