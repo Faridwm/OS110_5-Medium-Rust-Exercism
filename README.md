@@ -71,7 +71,13 @@ else if char_bar[i-1] == 'X' && i == 10 { //mengecek nilai X == 10 dan berada di
             sum += 10;
         }
 ```
-* 
+* Selain dari syarat di atas maka diabaikan
+
+Setelah hasil akhir di dapatkan maka dimodulus dengan 11
+```rust
+sum % 11
+```
+Jika hasil dari sum % 11 == 0, maka ISBN tersebut valid jika tidak sama dengan 0 maka ISBN tersebut tidak valid
 
 
 
