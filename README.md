@@ -34,4 +34,24 @@ if char_bar.len() != 10 { //melakukan pengecekan apakah panjang dari digit == 10
     }
 ```
 
+Jika panjang String sebesar 10, maka masuk ke dalam rumus.
+```rust
+let mut cek = 0;
+    for i in 1..=10{
+        //is_numeric mengecek apakah setiap digit merupakan angka atau bukan (non-angka hanya X dan itu terletak di digit akhir ISBN)
+        if char_bar[i-1].is_numeric() { 
+            cek += (11 - i as i32) * (char_bar[i-1].to_string() //mengubah char enjadi &str
+                                        .parse::<i32>() //mengubah &str ke integer 32 bit
+                                        .unwrap()); 
+                                        //https://stackoverflow.com/questions/43983414/how-to-convert-char-to-integer-so-that-1-becomes-1
+        }
+        else if char_bar[i-1] == 'X' && i == 10 { //mengecek nilai X == 10 dan berada di digit terakhir ISBN
+            cek += 10;
+        }
+        else {
+            return false;
+        }
+    }
+```
+
 
