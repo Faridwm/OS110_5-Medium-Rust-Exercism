@@ -1,3 +1,15 @@
+# OS 110 Medium Rust Exercism
+Esai ini di buat untuk menjelaskan salah satu persoalan tust dengan tipe kesulitan medium.
+Alhamdulillah saya telah menyelesaikan:
+* Clock
+* Triangle
+* Isogram
+* Perfect Numvers
+* Scrabble Score
+* ISBN Verifier
+
+Dan dalam esai ini saya akan menjelaskan sedikit tentang permasalahan dan soulis dati ISBN Verifier
+
 # ISBN Verifier
 
 ISBN adalah singkatan dari *International Standard Book Number* (Nomor Buku Standar Internasional), ISBN sendiri merupakan nomor unik yang terdiri dari 10/13 digit (dalam kasus ini 10 digit) sebagai pemberi identifikasi terhadap satu judul buku yang diterbitkan.
